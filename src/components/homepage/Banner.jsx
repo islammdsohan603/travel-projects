@@ -7,6 +7,7 @@ import {
   Users,
   ArrowRight,
 } from "lucide-react";
+import Link from "next/link";
 
 const BannerPage = () => {
   return (
@@ -72,7 +73,9 @@ const BannerPage = () => {
               {/* BUTTONS */}
               <div className="flex flex-wrap gap-5 mt-10">
 
-                <button className="group px-8 py-4 bg-orange-500 hover:bg-orange-600 rounded-2xl text-white font-semibold transition-all duration-300 shadow-[0_10px_30px_rgba(249,115,22,0.45)] hover:scale-105">
+                <Link href={'/adddestinations'}>
+                  
+                  <button className="group px-8 py-4 bg-orange-500 hover:bg-orange-600 rounded-2xl text-white font-semibold transition-all duration-300 shadow-[0_10px_30px_rgba(249,115,22,0.45)] hover:scale-105">
 
                   <span className="flex items-center gap-2">
 
@@ -87,11 +90,16 @@ const BannerPage = () => {
 
                 </button>
 
-                <button className="px-8 py-4 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md text-white font-semibold hover:bg-white hover:text-black transition-all duration-300">
+                  </Link>
+
+                <Link href={'/adddestinations'}>
+                 <button className="px-8 py-4 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md text-white font-semibold hover:bg-white hover:text-black transition-all duration-300">
 
                   View Destinations
 
                 </button>
+                  
+                </Link>
 
               </div>
 

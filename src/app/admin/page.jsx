@@ -29,7 +29,7 @@ const AddDestinationsPage = () => {
      const duration = formData.get('duration');
      const departureDate = formData.get('departureDate');
      const image = formData.get('image');
-     const description = formData.get('description');
+     overview: formData.get("description")
 
     
     
@@ -47,7 +47,7 @@ const AddDestinationsPage = () => {
       duration,
       departureDate,
       image,
-      description,
+       overview ,
       })
    })
     
