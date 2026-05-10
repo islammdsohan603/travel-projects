@@ -19,7 +19,7 @@ const Navbar = () => {
     },
     {
       name: 'Destinations',
-      href: '/destinations',
+      href: '/adddestinations',
     },
     {
       name: 'Bookings',
