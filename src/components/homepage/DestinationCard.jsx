@@ -70,19 +70,16 @@ const DestinationCard = ({ dest }) => {
 
         </div>
 
-        {/* DESCRIPTION */}
-        <p className="text-slate-400 leading-relaxed line-clamp-3">
-          {description}
-        </p>
+        
 
         {/* BUTTON */}
-        <Link href={`/destinations/${_id}`}>
-          <Button
-            size="lg"
-            className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-2xl"
+        <Link href={`/adddestinations/${_id}`}>
+          <button
+           
+            className="w-full cursor-pointer py-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-2xl"
           >
-            Book Now
-          </Button>
+           Details
+          </button>
         </Link>
 
       </div>
