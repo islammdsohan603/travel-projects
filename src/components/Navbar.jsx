@@ -4,12 +4,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { Menu, User, X } from 'lucide-react';
-
+import { Avatar } from '@heroui/react';
 import NavLink from './NavLink';
-import MobileMenu from './Menubar';
+import Menubar from './Menubar';
+import { authClient } from '@/app/lib/auth-client';
  
 
 const Navbar = () => {
+
+  const {data:session, isPending} = authClient.useSession()
+
+  const users = session?.user
+
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
@@ -23,7 +29,7 @@ const Navbar = () => {
     },
     {
       name: 'Bookings',
-      href: '/bookings',
+      href: '/booking',
     },
     {
       name: 'Admin',
@@ -65,7 +71,18 @@ const Navbar = () => {
               Profile
             </NavLink>
 
-            <Link
+            {users ? <div className='flex items-center gap-2'>
+              
+                  <Avatar>
+        <Avatar.Image referrerPolicy='no-referrer' alt="John Doe" src={users?.image} />
+                <Avatar.Fallback>{ users?.name.charAt(0)}</Avatar.Fallback>
+      </Avatar>
+
+              <button onClick={()=> authClient.signOut()} className='bg-red-500 px-4 py-2 rounded-full text-white hover:bg-red-600 cursor-pointer'>Logout</button>
+
+         </div> :(
+                <div>
+              <Link
               href="/login"
               className="text-sm font-medium text-slate-300 hover:text-cyan-400 transition duration-300"
             >
@@ -78,6 +95,8 @@ const Navbar = () => {
             >
               Sign Up
             </Link>
+          </div>
+         )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -95,7 +114,7 @@ const Navbar = () => {
       </header>
 
       {/* Mobile Menu */}
-      <MobileMenu
+      <Menubar
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         navItems={navItems}

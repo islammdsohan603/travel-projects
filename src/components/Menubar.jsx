@@ -1,77 +1,82 @@
 'use client';
 
 import Link from 'next/link';
+import { User } from 'lucide-react';
+import NavLink from './NavLink';
 
-import {
-  Home,
-  MapPin,
-  Plane,
-  Compass,
-  User,
-} from 'lucide-react';
-
-const MobileMenu = ({
-  isOpen,
-  setIsOpen,
-  navItems,
-}) => {
-  const icons = {
-    Home,
-    Destinations: MapPin,
-    Bookings: Plane,
-    Admin: Compass,
-  };
-
+const MobileMenu = ({ isOpen, setIsOpen, navItems }) => {
   return (
-    <div
-      className={`md:hidden fixed top-0 right-0 z-40 h-screen w-[80%] bg-slate-950 border-l border-white/10 backdrop-blur-xl transition-all duration-300 ${
-        isOpen
-          ? 'translate-x-0'
-          : 'translate-x-full'
-      }`}
-    >
-      <div className="flex flex-col p-8 pt-24 gap-7">
-        {navItems.map((item) => {
-          const Icon = icons[item.name];
+    <>
+     
+      <div 
+        className={`fixed inset-0 z-[60] bg-slate-950/60 backdrop-blur-sm transition-opacity duration-300 ${
+          isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+        onClick={() => setIsOpen(false)}
+      />
 
-          return (
-            <Link
-              key={item.name}
-              href={item.href}
-              onClick={() => setIsOpen(false)}
-              className="flex items-center gap-4 text-xl font-semibold text-white hover:text-cyan-400 transition"
+   
+      <div 
+        className={`fixed top-0 right-0 z-[70] h-full w-72 bg-slate-900 border-l border-white/10 p-6 transform transition-transform duration-300 ease-in-out ${
+          isOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="flex flex-col h-full">
+          
+          <div className="flex justify-between items-center mb-8">
+            <span className="text-xl font-bold text-white">Menu</span>
+            <button 
+              onClick={() => setIsOpen(false)} 
+              className="p-2 text-slate-400 hover:text-white transition-colors"
             >
-              <Icon size={22} />
-              {item.name}
+              <span className="text-2xl">✕</span>
+            </button>
+          </div>
+ 
+          <ul className="flex flex-col gap-4 mb-auto">
+            {navItems.map((item) => (
+              <li key={item.name}>
+                <NavLink 
+                  href={item.href} 
+                  className="text-lg py-2 block" 
+                  onClick={() => setIsOpen(false)} //  
+                >
+                  {item.name}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+
+        
+          <div className="mt-auto pt-6 border-t border-white/10 flex flex-col gap-4">
+            <NavLink 
+              href="/profile" 
+              className="flex items-center gap-2 text-lg py-2"
+              onClick={() => setIsOpen(false)}
+            >
+              <User size={20} />
+              Profile
+            </NavLink>
+
+            <Link
+              href="/login"
+              onClick={() => setIsOpen(false)}
+              className="text-center text-slate-300 hover:text-cyan-400 py-2 text-lg font-medium transition-all"
+            >
+              Login
             </Link>
-          );
-        })}
 
-        <div className="border-t border-white/10 pt-6 flex flex-col gap-4">
-          <Link
-            href="/profile"
-            className="flex items-center justify-center gap-2 w-full text-center py-3 rounded-xl border border-white/10 text-white hover:bg-white/5 transition"
-          >
-            <User size={18} />
-            Profile
-          </Link>
-
-          <Link
-            href="/login"
-            className="w-full text-center py-3 rounded-xl border border-white/10 text-white hover:bg-white/5 transition"
-          >
-            Login
-          </Link>
-
-          <Link
-            href="/signup"
-            className="w-full text-center py-3 rounded-xl bg-cyan-400 text-black font-bold hover:bg-cyan-300 transition"
-          >
-            Sign Up
-          </Link>
+            <Link
+              href="/signup"
+              onClick={() => setIsOpen(false)}
+              className="text-center bg-cyan-500 hover:bg-cyan-600 text-white py-3 rounded-xl text-lg font-semibold transition-all shadow-lg shadow-cyan-500/20"
+            >
+              Sign Up
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

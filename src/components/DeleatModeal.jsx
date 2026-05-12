@@ -51,7 +51,7 @@ const DeleatModeal = ({ id }) => {
               <Button slot="close">Cancel</Button>
 
               <Button
-                slot="close"
+                 
                 variant="danger"
                 onClick={handleDelete}
               >

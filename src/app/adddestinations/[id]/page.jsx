@@ -1,3 +1,4 @@
+import BookingButton from '@/components/BookingButton';
 import DeleatModeal from '@/components/DeleatModeal';
 import EditModalPage from '@/components/EditModalPage';
 import { 
@@ -161,9 +162,7 @@ const DestinationDetailsPage = async ({ params }) => {
             </div>
 
             {/* Booking Button */}
-            <button className="mt-12 w-full bg-orange-500 hover:bg-orange-600 text-white py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 active:scale-[0.98]">
-              Book Your Experience Now
-            </button>
+            <BookingButton destination={data}/>
           </div>
         </div>
       </section>
