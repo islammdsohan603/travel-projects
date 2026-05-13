@@ -1,0 +1,7 @@
+@keyframes socSpin { to{transform:rotate(360deg);} }
+.wrap { width:100%; }
+.btn { display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:12px 20px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#f1f5f9;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.25s ease;font-family:'Inter',sans-serif; }
+.btn:hover:not(:disabled) { background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);transform:translateY(-1px); }
+.btn:disabled { opacity:0.6;cursor:not-allowed; }
+.logo { width:18px;height:18px;border-radius:3px; }
+.spinner { width:16px;height:16px;border:2px solid rgba(255,255,255,0.2);border-top-color:#6366f1;border-radius:50%;animation:socSpin 0.7s linear infinite;display:inline-block;flex-shrink:0; }

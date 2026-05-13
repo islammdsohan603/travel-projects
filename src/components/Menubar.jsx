@@ -3,8 +3,15 @@
 import Link from 'next/link';
 import { User } from 'lucide-react';
 import NavLink from './NavLink';
+import { authClient } from '@/app/lib/auth-client';
+import { Avatar } from '@heroui/react';
 
 const MobileMenu = ({ isOpen, setIsOpen, navItems }) => {
+
+
+  const {data:session,isPending} = authClient.useSession();
+  const users = session?.user;
+
   return (
     <>
      
@@ -57,22 +64,51 @@ const MobileMenu = ({ isOpen, setIsOpen, navItems }) => {
               <User size={20} />
               Profile
             </NavLink>
+{isPending ? (
+  <div className="text-center text-slate-300 hover:text-cyan-400 py-2 text-lg font-medium transition-all">
+    Loading...
+  </div>
+            ) : users ? (
+                
+                <div className='flex flex-col items-center gap-2'>
+                  <div className="flex items-center gap-3">
+                                    <Avatar>
+                        <Avatar.Image referrerPolicy='no-referrer' alt="John Doe" src={users?.image} />
+                                <Avatar.Fallback>{ users?.name.charAt(0)}</Avatar.Fallback>
+                      </Avatar>
+                      <span className="text-slate-200 font-medium">{users?.name}</span>
+                  </div>
+<button 
+    onClick={async () => {
+      await authClient.signOut();
+      setIsOpen(false);
+    }}
+    className="text-center text-slate-300 hover:text-cyan-400 py-2 text-lg font-medium transition-all"
+  >
+    Sign Out
+  </button>
+                </div>
+                
+  
+) : (
+  <>
+    <Link
+      href="/login"
+      onClick={() => setIsOpen(false)}
+      className="text-center text-slate-300 hover:text-cyan-400 py-2 text-lg font-medium transition-all"
+    >
+      Login
+    </Link>
 
-            <Link
-              href="/login"
-              onClick={() => setIsOpen(false)}
-              className="text-center text-slate-300 hover:text-cyan-400 py-2 text-lg font-medium transition-all"
-            >
-              Login
-            </Link>
-
-            <Link
-              href="/signup"
-              onClick={() => setIsOpen(false)}
-              className="text-center bg-cyan-500 hover:bg-cyan-600 text-white py-3 rounded-xl text-lg font-semibold transition-all shadow-lg shadow-cyan-500/20"
-            >
-              Sign Up
-            </Link>
+    <Link
+      href="/signup"
+      onClick={() => setIsOpen(false)}
+      className="text-center bg-cyan-500 hover:bg-cyan-600 text-white py-3 rounded-xl text-lg font-semibold transition-all shadow-lg shadow-cyan-500/20"
+    >
+      Sign Up
+    </Link>
+  </>
+)}
           </div>
         </div>
       </div>

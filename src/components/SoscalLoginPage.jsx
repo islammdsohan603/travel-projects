@@ -1,36 +1,45 @@
 import { authClient } from '@/app/lib/auth-client';
-import React from 'react'
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
+import styles from './SoscalLoginPage.module.css';
 
 const SoscalLoginPage = () => {
+  const router = useRouter();
+  const [loadingGoogle, setLoadingGoogle] = useState(false);
 
-  const handelGoogleSign =async () => {
-  await  authClient.signIn.social({
-      provider:'google',
-      callbackURL:'/'
-    })
-  }
+  const handleGoogleSign = async () => {
+    setLoadingGoogle(true);
+    const { data, error } = await authClient.signIn.social({
+      provider: 'google',
+      callbackURL: '/',
+    });
+
+    setLoadingGoogle(false);
+    if (data) {
+      toast.success('Google login successful');
+      router.push('/');
+    }
+    if (error) {
+      toast.error(error.message);
+    }
+  };
 
   return (
-    <div className="max-w-md mx-auto bg-slate-800 rounded-2xl p-8 shadow-2xl border border-white/10">
-      {/* Title */}
-      <h2 className="text-2xl font-bold text-white text-center mb-6">Login with Social Media</h2>
-
-      {/* Google Button */}
-      <button onClick={()=>handelGoogleSign} className="flex items-center justify-center gap-3 w-full py-3 px-6 bg-white rounded-xl hover:bg-gray-100 transition-all mb-3 cursor-pointer">
-        <img src="https://www.google.com/favicon.ico" className="w-5 h-5" />
-        <span className="font-semibold">Login with Google</span>
+    <div className={styles.wrap}>
+      <button onClick={handleGoogleSign} disabled={loadingGoogle} className={styles.btn}>
+        {loadingGoogle ? (
+          <>
+            <span className={styles.spinner} />
+            <span>Connecting...</span>
+          </>
+        ) : (
+          <>
+            <img src="https://www.google.com/favicon.ico" alt="Google" className={styles.logo} />
+            <span>Continue with Google</span>
+          </>
+        )}
       </button>
-
-      {/* GitHub Button */}
-      <button className="flex items-center justify-center gap-3 w-full py-3 px-6 bg-white rounded-xl hover:bg-gray-100 transition-all cursor-pointer">
-        <img src="https://github.com/favicon.ico" className="w-5 h-5" />
-        <span className="font-semibold">Login with GitHub</span>
-      </button>
-
-      {/* Note */}
-      <p className="text-slate-400 text-sm text-center mt-4">
-        Use social login for quick access.
-      </p>
     </div>
   );
 };
