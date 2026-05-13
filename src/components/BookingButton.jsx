@@ -1,9 +1,16 @@
 "use client";
 
-import toast from "react-hot-toast";
+ 
+import { authClient } from "@/app/lib/auth-client";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const BookingButton = ({ destination }) => {
+
+  const {data:session}=   authClient.useSession();
+
+    
+
 
   const router = useRouter();
 
@@ -11,6 +18,7 @@ const BookingButton = ({ destination }) => {
 
     const bookingInfo = {
       name: destination.name,
+      email: session?.user.email,
       image: destination.image,
       country: destination.country,
       departureDate: destination.departureDate,
@@ -19,6 +27,9 @@ const BookingButton = ({ destination }) => {
       status: "Confirmed",
       bookingDate: new Date(),
     };
+
+    console.log(bookingInfo);
+
 
     const res = await fetch("http://localhost:5000/bookings", {
       method: "POST",
@@ -32,7 +43,7 @@ const BookingButton = ({ destination }) => {
 
     if (data.insertedId) {
 
-      toast.success("Booking Successful!");
+      toast.success('Booking Successful!')
 
       setTimeout(() => {
         router.push(`/booking`);

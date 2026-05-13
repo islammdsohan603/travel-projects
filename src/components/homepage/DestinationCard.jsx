@@ -13,7 +13,7 @@ const DestinationCard = ({ dest }) => {
     duration,
     departureDate,
     image,
-    description,
+     overview,
   } = dest;
 
   return (

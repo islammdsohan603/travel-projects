@@ -81,10 +81,10 @@ const Navbar = () => {
               <button onClick={()=> authClient.signOut()} className='bg-red-500 px-4 py-2 rounded-full text-white hover:bg-red-600 cursor-pointer'>Logout</button>
 
          </div> :(
-                <div>
+                <div className='flex items-center gap-2'>
               <Link
               href="/login"
-              className="text-sm font-medium text-slate-300 hover:text-cyan-400 transition duration-300"
+              className="text-sm font-medium text-slate-300 bg-gray-500 px-4 py-2 rounded-full cursor-pointer hover:bg-gray-800 transition duration-300"
             >
               Login
             </Link>
