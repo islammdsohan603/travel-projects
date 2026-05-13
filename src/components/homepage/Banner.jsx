@@ -26,10 +26,10 @@ const BannerPage = () => {
         />
 
         {/* DARK OVERLAY */}
-        <div className="absolute inset-0 bg-black/65 z-10" />
+        <div className="absolute inset-0 bg-black/40 z-10" />
 
         {/* GRADIENT OVERLAY */}
-        <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/50 to-transparent z-10" />
+        <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/30 to-transparent z-10" />
 
         {/* HERO CONTENT */}
         <div className="relative z-20 flex items-center min-h-[850px]">

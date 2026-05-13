@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+  <img src="./public/assets/Wanderlast.png" alt="WanderLust Logo" width="200" />
+  
+  # WanderLust - Modern Travel & Booking Platform
+  
+  **Explore the world's most beautiful destinations with personalized travel experiences.**
 
-## Getting Started
+  [![Next.js](https://img.shields.io/badge/Next.js-16.2-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+  [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+  [![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+  [![Better Auth](https://img.shields.io/badge/Better_Auth-Security-blueviolet?style=for-the-badge)](https://better-auth.com/)
+</div>
 
-First, run the development server:
+<br />
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🌟 Overview
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**WanderLust** is a premium, full-stack travel booking web application built with the latest web technologies. It offers a seamless, immersive user experience with a sleek dark-themed UI, allowing users to discover destinations, book trips, and manage their profiles. Administrators have access to a dedicated dashboard for managing the platform.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## ✨ Key Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **🔐 Secure Authentication:** Seamless sign-up, login, and social authentication powered by [Better Auth](https://better-auth.com/) and MongoDB.
+- **🌍 Dynamic Destinations:** Browse curated travel destinations with beautiful visuals and detailed information.
+- **📅 Easy Booking System:** User-friendly trip booking interface with real-time status updates.
+- **🛡️ Admin Dashboard:** Protected routes for administrators to manage destinations, view bookings, and oversee users.
+- **👤 User Profiles:** Personalized dashboards where users can view and manage their booking history and account details.
+- **🎨 Premium UI/UX:** Stunning dark-mode aesthetics with glassmorphism effects, built using Tailwind CSS v4 and HeroUI.
+- **📱 Fully Responsive:** Flawless experience across all devices—from desktop to mobile.
 
-## Learn More
+## 🛠️ Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+**Frontend:**
+- [Next.js 16 (App Router)](https://nextjs.org/)
+- [React 19](https://react.dev/)
+- [Tailwind CSS v4](https://tailwindcss.com/)
+- [HeroUI](https://heroui.com/)
+- [Lucide React](https://lucide.dev/) (Icons)
+- [React Toastify](https://fkhadra.github.io/react-toastify/) (Notifications)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Backend & Database:**
+- [Next.js API Routes](https://nextjs.org/docs/api-routes/introduction)
+- [MongoDB](https://www.mongodb.com/) (Native Driver)
+- [Better Auth (Mongo Adapter)](https://better-auth.com/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+ 
+### Screenshots
+ 
+### Home Page Screenshot
 
-## Deploy on Vercel
+ ![alt text](<Screenshot 2026-05-13 114734.png>)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Travel   Page Screenshot
+![alt text](<Screenshot 2026-05-13 114802.png>)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Login Page Screenshot
+
+![alt text](<Screenshot 2026-05-13 114832.png>)
+ 
+
+### Prerequisites
+
+Ensure you have the following installed:
+- [Node.js](https://nodejs.org/en/) (v18.17.0 or higher)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- A MongoDB URI (Local or Atlas)
+
+ 
+ 
+
+## 💡 Future Enhancements
+
+- [ ] Payment gateway integration (Stripe/PayPal)
+- [ ] Real-time chat support for travelers
+- [ ] Interactive maps for destinations using Mapbox/Google Maps
+- [ ] Email notifications for successful bookings
+
+---
+
+## 👨‍💻 Author
+
+**Islammdsohan603**
+- GitHub: [@islammdsohan603](https://github.com/islammdsohan603)
+
+---
+
+<div align="center">
+  <i>If you like this project, please give it a ⭐ on GitHub!</i>
+</div>
