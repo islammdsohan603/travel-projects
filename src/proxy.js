@@ -1,26 +1,30 @@
 import { NextResponse } from "next/server";
-
-export function proxy(request) {
-
-  const token = request.cookies.get("token");
+import { auth } from "./app/lib/auth";
+import { headers } from "next/headers";
 
 
-  if (!token) {
+export async function proxy(request) {
 
-    return NextResponse.redirect(
-      new URL("/login", request.url)
-    );
+
+  const session = await auth.api.getSession({
+    headers: await headers()
+  })
+
+
+  if (session) {
+
+    return NextResponse.next();
+
   }
 
+  return NextResponse.redirect(new URL('/login', request.url));
 
-  return NextResponse.next();
+
+
+
+
 }
 
 export const config = {
-
-  matcher: [
-    "/booking",
-    "/adddestinations/:path*",
-  ],
-
-};
+  matcher: ['/adddestinations', '/admin']
+}

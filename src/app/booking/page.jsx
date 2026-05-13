@@ -28,6 +28,10 @@ const BookingPage = async () => {
             Your booked destinations will appear here once you reserve your next adventure.
           </p>
 
+          <Link href={'/adddestinations'} >
+            <button className='bg-gray-700 px-6 py-2 rounded-3xl  mt-4 inline-block cursor-pointer text-white font-semibold hover:bg-gray-800 transition-colors duration-300'>Continue</button>
+          </Link>
+          
         </div>
 
       </div>

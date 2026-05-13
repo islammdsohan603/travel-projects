@@ -28,7 +28,7 @@ const BookingButton = ({ destination }) => {
       bookingDate: new Date(),
     };
 
-    console.log(bookingInfo);
+   
 
 
     const res = await fetch("http://localhost:5000/bookings", {
