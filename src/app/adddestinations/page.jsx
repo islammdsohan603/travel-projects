@@ -2,7 +2,7 @@ import DestinationCard from "@/components/homepage/DestinationCard";
 
 const DestinationsPage = async () => {
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/destinations`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destinations`, {
     cache: "no-store",
   });
 

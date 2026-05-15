@@ -6,7 +6,7 @@ import React from 'react'
 const BookingPage = async () => {
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/bookings`,
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/bookings`,
     {
       cache: "no-store",
     }

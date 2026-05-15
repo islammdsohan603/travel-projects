@@ -13,7 +13,7 @@ const CancelBookingButton = ({ id }) => {
     const {data:tokenData} = await authClient.token();
 
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_URL}/bookings/${id}`,
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${id}`,
       {
         method: "DELETE",
         headers: {

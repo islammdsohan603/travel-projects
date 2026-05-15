@@ -24,7 +24,7 @@ const DestinationDetailsPage = async ({ params }) => {
   const token = cookieStore.get('better-auth.session_token')?.value || cookieStore.get('__Secure-better-auth.session_token')?.value || '';
 
 const res = await fetch(
-  `${process.env.NEXT_PUBLIC_URL}/destinations/${id}`,
+  `${process.env.NEXT_PUBLIC_SERVER_URL}/destinations/${id}`,
   {
     headers: {
       authorization: `Bearer ${token}`
