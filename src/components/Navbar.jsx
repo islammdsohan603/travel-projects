@@ -7,13 +7,16 @@ import { Menu, User, X } from 'lucide-react';
 import { Avatar } from '@heroui/react';
 import NavLink from './NavLink';
 import Menubar from './Menubar';
-import { authClient } from '@/app/lib/auth-client';
- 
+import {
+  authClient,
+  useSession
+} from '@/app/lib/auth-client';
+
+
 
 const Navbar = () => {
-
-  const {data:session, isPending} = authClient.useSession()
-
+ 
+const { data: session, isPending } = useSession();
   const users = session?.user
 
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +35,7 @@ const Navbar = () => {
       href: '/booking',
     },
     {
-      name: 'Admin',
+      name: 'ADD Destination',
       href: '/admin',
     },
   ];

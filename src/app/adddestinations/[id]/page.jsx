@@ -1,5 +1,6 @@
 
 
+import { auth } from '@/app/lib/auth';
 import BookingButton from '@/components/BookingButton';
 import DeleatModeal from '@/components/DeleatModeal';
 import EditModalPage from '@/components/EditModalPage';
@@ -12,15 +13,25 @@ import {
   CheckCircle2, 
   ShieldCheck 
 } from 'lucide-react';
+import { headers, cookies } from 'next/headers';
 import Link from 'next/link';
 import React from 'react';
 
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
 
-  const res = await fetch(`http://localhost:5000/destinations/${id}`, {
+  const cookieStore = await cookies();
+  const token = cookieStore.get('better-auth.session_token')?.value || cookieStore.get('__Secure-better-auth.session_token')?.value || '';
+
+const res = await fetch(
+  `${process.env.NEXT_PUBLIC_URL}/destinations/${id}`,
+  {
+    headers: {
+      authorization: `Bearer ${token}`
+    },
     cache: "no-store",
-  });
+  }
+);
 
   const data = await res.json();
 

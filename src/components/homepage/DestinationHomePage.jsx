@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const DestinationHomePage = async () => {
 
-  const res = await fetch("http://localhost:5000/destinations", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/destinations`, {
     cache: "no-store",
   });
 

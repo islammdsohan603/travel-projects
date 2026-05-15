@@ -29,12 +29,15 @@ const BookingButton = ({ destination }) => {
     };
 
    
+    const { data: tokenData } = await authClient.token();
 
 
-    const res = await fetch("http://localhost:5000/bookings", {
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/bookings`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        authorization:`Bearer ${tokenData?.token}`
       },
       body: JSON.stringify(bookingInfo),
     });

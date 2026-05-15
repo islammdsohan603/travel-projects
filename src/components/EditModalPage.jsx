@@ -12,6 +12,7 @@ import {
   Input,
   Description,
 } from "@heroui/react";
+import { authClient } from "@/app/lib/auth-client";
 
 const EditModalPage =  ({id}) => {
 
@@ -22,10 +23,13 @@ const onSubmit = async (e) => {
  const update_destination= Object.fromEntries(formData);
   console.log(update_destination)
 
-   const res = await fetch(`http://localhost:5000/destinations/${id}`, {
+   const {data:tokenData} = await authClient.token();
+
+   const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/destinations/${id}`, {
   method: "PATCH",
   headers: {
     "Content-Type": "application/json",
+    authorization:`Bearer ${tokenData?.token}`
   },
   body: JSON.stringify(update_destination),
 });

@@ -2,6 +2,7 @@
 
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { authClient } from "@/app/lib/auth-client";
 
 const CancelBookingButton = ({ id }) => {
 
@@ -9,10 +10,15 @@ const CancelBookingButton = ({ id }) => {
 
   const handleDelete = async () => {
 
+    const {data:tokenData} = await authClient.token();
+
     const res = await fetch(
-      `http://localhost:5000/bookings/${id}`,
+      `${process.env.NEXT_PUBLIC_URL}/bookings/${id}`,
       {
         method: "DELETE",
+        headers: {
+          authorization: `Bearer ${tokenData?.token}`
+        }
       }
     );
 

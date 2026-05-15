@@ -15,6 +15,7 @@ import {
   TextArea,
   TextField,
 } from "@heroui/react";
+import { authClient } from "../lib/auth-client";
 
 const AddDestinationsPage = () => {
 
@@ -29,14 +30,15 @@ const AddDestinationsPage = () => {
      const duration = formData.get('duration');
      const departureDate = formData.get('departureDate');
      const image = formData.get('image');
-     overview: formData.get("description")
+     const overview= formData.get("description");
 
+    const {data:tokenData}=await authClient.token();
     
-    
-   const res = await fetch('http://localhost:5000/destinations', {
+   const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/destinations`, {
       method: 'POST',
       headers: {
-        'Content-Type':'application/json'
+        'Content-Type':'application/json',
+        authorization:`Bearer ${tokenData?.token}`
       },
 
       body: JSON.stringify({

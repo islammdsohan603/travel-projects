@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/app/lib/auth-client";
 import { AlertDialog, Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
 
@@ -7,10 +8,16 @@ const DeleatModeal = ({ id }) => {
   const router = useRouter();
 
   const handleDelete = async () => {
+
+    const {data:tokenData}=await authClient.token();
+
     const res = await fetch(
-      `http://localhost:5000/destinations/${id}`,
+      `${process.env.NEXT_PUBLIC_URL}/destinations/${id}`,
       {
-        method: "DELETE"
+        method: "DELETE",
+        headers: {
+          authorization:`Bearer ${tokenData?.token}`
+        }
       }
     );
 
